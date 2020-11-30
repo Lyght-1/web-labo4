@@ -141,8 +141,8 @@ class Repository {
     static flushExpired() {
         let now = utilities.nowInSeconds();
         for(let cache in repositoryCache){
-            if (repositoryCache[cache].expireIn < now) {
-                console.log("Cached" +cache + "expired");
+            if (repositoryCache[cache] != null && repositoryCache[cache].expireIn < now) {
+                console.log("Cached " +cache + " expired");
                 repositoryCache[cache]=null;
             }
         }
