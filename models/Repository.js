@@ -2,7 +2,6 @@ const utilities = require("../utilities");
 const serverVariables = require("../serverVariables");
 const { v1: uuidv1 } = require('uuid');
 const fs = require('fs');
-const { Console } = require("console");
 ///////////////////////////////////////////////////////////////////////////
 // This class provide CRUD operations on JSON objects collection text file 
 // with the assumption that each object have an Id member.
@@ -140,17 +139,13 @@ class Repository {
     }
 
     static flushExpired() {
-        let indexToDelete = [];
-        let index = 0;
         let now = utilities.nowInSeconds();
         for(let cache in repositoryCache){
             if (repositoryCache[cache].expireIn < now) {
                 console.log("Cached" +cache + "expired");
-                indexToDelete.push(index);
+                repositoryCache[cache]=null;
             }
-            index ++;
         }
-        utilities.deleteByIndex(repositoryCache, indexToDelete);
     }
 }
 
