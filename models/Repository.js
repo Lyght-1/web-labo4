@@ -17,7 +17,7 @@ class Repository {
         this.cached = cached;
         this.objectsName = objectsName.toLowerCase();
         this.objectsList = [];
-        this.objectsFile = `./data/${objectsName}.json`;
+        this.objectsFile = `./data/${this.objectsName}.json`;
         this.initEtag();
         this.read();
     }
