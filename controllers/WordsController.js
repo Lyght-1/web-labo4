@@ -14,14 +14,9 @@ class WordsController extends require('./Controller') {
         return false;
     }
 
-    head() {
-        console.log(this.wordsRepository.ETag);
-        this.response.JSON(null, this.wordsRepository.ETag);
-    }
-
     get(){
         let params = this.getQueryStringParams(); 
         let collectionFilter= new CollectionFilter(this.wordsRepository.getAll(), params);
-        this.response.JSON(collectionFilter.get(), this.wordsRepository.ETag);
+        this.response.JSON(collectionFilter.get());
     }
 }

@@ -120,7 +120,7 @@
                 queryString += "&word=" + currentLetter + "*";
             $('#words').empty();
             $.ajax({
-                url: "http://localhost:5000/api/words" + queryString,
+                url: "https://sequoia-silver-calf.glitch.me/api/words" + queryString,
                 type: 'GET',
                 contentType:'text/plain',
                 data:{},
